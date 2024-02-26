@@ -1,3 +1,18 @@
+# venmic fork
+
+this is a fork of venmic which removes the PipeWire check so that it always passes.
+
+## why?
+
+the PipeWire check actually doesn't check whether PipeWire is running. instead, it queries PulseAudio and checks whether it is PulseAudio or PipeWire (via pipewire-pulse).
+therefore it assumes that the user is using pipewire-pulse instead of PulseAudio.
+
+what if you have a PulseAudio-less setup? or you want to keep using vanilla PulseAudio (for example with the JACK sink)? this test will fail as it finds vanilla PulseAudio and not pipewire-pulse.
+
+so yeah. I removed the check and simply made it return true.
+
+# original readme
+
 <div align="center">
 
 <img src="https://avatars.githubusercontent.com/u/113042587" width="150">
